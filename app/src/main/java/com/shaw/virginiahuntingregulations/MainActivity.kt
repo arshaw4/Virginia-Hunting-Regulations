@@ -11,6 +11,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.util.Calendar
 
+
 class MainActivity : AppCompatActivity() , DatePickerDialog.OnDateSetListener{
 private val calendar = Calendar.getInstance()
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +32,7 @@ private val calendar = Calendar.getInstance()
                 Calendar.DAY_OF_MONTH)).show()
         }
         findViewById<Button>(R.id.submitDateButton).setOnClickListener{
+            //startActivity(SpeciesInput);
             //move to next layout and pass date as parameter
         }
     }
