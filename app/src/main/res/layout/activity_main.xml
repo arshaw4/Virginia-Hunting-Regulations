@@ -11,7 +11,7 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Virginia Waterfowl Regulations"
+        android:text="@string/virginia_waterfowl_regulations"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,7 +20,7 @@
         android:textSize="25sp"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/submitDateButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/submit"
@@ -43,9 +43,32 @@
         android:text="@string/defaultDate"
         style = "?android:spinnerStyle"
         android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/submitDateButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/date_of_hunt"
+        android:textAlignment="center"
+        android:textColor="@android:color/holo_green_light"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/datePickerButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/ducksBG"
+        android:contentDescription="@string/ducksBGImgDesc"
+        android:layout_width="415dp"
+        android:layout_height="415dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/duck_bg" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -30,7 +30,9 @@ private val calendar = Calendar.getInstance()
             DatePickerDialog(this,this,calendar.get(Calendar.YEAR),calendar.get(Calendar.MONTH),calendar.get(
                 Calendar.DAY_OF_MONTH)).show()
         }
-
+        findViewById<Button>(R.id.submitDateButton).setOnClickListener{
+            //move to next layout and pass date as parameter
+        }
     }
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {
         Log.e("Calendar", "$year -- $month -- $dayOfMonth")

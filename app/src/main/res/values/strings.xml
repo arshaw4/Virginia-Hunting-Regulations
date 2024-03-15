@@ -2,4 +2,7 @@
     <string name="app_name">Virginia Hunting Regulations</string>
     <string name="submit">Submit</string>
     <string name="defaultDate">1/1/2024</string>
+    <string name="date_of_hunt">Date of Hunt</string>
+    <string name="virginia_waterfowl_regulations">Virginia Waterfowl Regulations</string>
+    <string name="ducksBGImgDesc">Black and White images of Ducks flyng through a swamp</string>
 </resources>
