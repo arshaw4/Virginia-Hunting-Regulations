@@ -1,6 +1,7 @@
 package com.shaw.virginiahuntingregulations
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
@@ -32,8 +33,9 @@ private val calendar = Calendar.getInstance()
                 Calendar.DAY_OF_MONTH)).show()
         }
         findViewById<Button>(R.id.submitDateButton).setOnClickListener{
-            //startActivity(SpeciesInput);
-            //move to next layout and pass date as parameter
+            val intent = Intent(this, SpeciesInput::class.java)
+            intent.putExtra("date", calendar)
+            startActivity(intent)
         }
     }
     override fun onDateSet(view: DatePicker?, year: Int, month: Int, dayOfMonth: Int) {

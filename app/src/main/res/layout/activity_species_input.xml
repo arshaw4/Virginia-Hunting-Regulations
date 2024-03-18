@@ -6,5 +6,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SpeciesInput">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fillViewport="true"
+        android:scrollbars = "vertical"
+        android:scrollbarStyle="insideInset">
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+        <!-- Gap row -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="80dp" />
+        <TableRow>
+            <TextView
+                android:paddingVertical="25dp"
+                android:paddingHorizontal="25dp"
+                android:layout_column="1"
+                android:text="@string/teal"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/tealInputValue"
+                android:layout_column="2"
+                android:text="0"
+                android:paddingVertical="25dp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2" />
+            <TextView
+                android:paddingVertical="25dp"
+                android:paddingHorizontal="25dp"
+                android:text="@string/mergansers"
+                android:layout_column="3"
+                android:gravity="start"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/mergansersInputValue"
+                android:layout_column="4"
+                android:text="0"
+                android:paddingVertical="25dp"
+                android:paddingHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2" />
+        </TableRow>
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
 
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+    </TableLayout>
+    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>

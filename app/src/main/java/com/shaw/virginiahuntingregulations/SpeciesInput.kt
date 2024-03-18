@@ -5,6 +5,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.Calendar
 
 class SpeciesInput : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,5 +17,10 @@ class SpeciesInput : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
+        val calendar = intent.getStringExtra("date")
+    }
+
+    private fun dateInRange(startRange: Calendar, endRange: Calendar, checkDate: Calendar): Boolean{
+        return checkDate.after(startRange) && checkDate.before(endRange)
     }
 }
