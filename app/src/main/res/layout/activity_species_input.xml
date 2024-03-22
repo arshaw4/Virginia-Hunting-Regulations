@@ -20,7 +20,7 @@
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/longTailInputValue"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -45,7 +45,7 @@
                 android:layout_column="2"
                 android:text="0"
                 android:paddingVertical="20dp"
-                android:paddingHorizontal="10dp"
+                android:paddingHorizontal="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -62,7 +62,7 @@
                 android:layout_column="4"
                 android:text="0"
                 android:paddingVertical="20dp"
-                android:paddingHorizontal="10dp"
+                android:paddingHorizontal="20dp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="number"
@@ -245,6 +245,41 @@
         <TableRow>
             <TextView
                 android:paddingVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:layout_column="1"
+                android:text="Coot:"
+                android:textSize="20sp" />
+            <EditText
+                android:id="@+id/cootInputValue"
+                android:layout_column="2"
+                android:text="0"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2" />
+            <TextView
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:text="Geese:"
+                android:layout_column="3"
+                android:gravity="start"
+                android:textSize="20sp"/>
+            <EditText
+                android:id="@+id/geeseInputValue"
+                android:layout_column="4"
+                android:text="0"
+                android:paddingVertical="20dp"
+                android:paddingHorizontal="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="number"
+                android:maxLength="2" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:paddingVertical="20dp"
                 android:text="Seaducks:"
                 android:layout_column="1"
                 android:textSize="20sp"/>
@@ -318,6 +353,41 @@
                 android:layout_height="wrap_content"
                 android:inputType="number"
                 android:maxLength="2" />
+        </TableRow>
+        <TableRow>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Atlantic Population"
+                android:textStyle="bold"
+                android:paddingVertical="20dp"
+                android:layout_column="1"
+                android:textSize="15sp"/>
+            <androidx.appcompat.widget.SwitchCompat
+                android:id="@+id/huntZoneSwitch"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingVertical="20dp"
+                android:layout_column="2"/>
+            <TextView
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"
+                android:text="Resident Population"
+                android:textStyle="bold"
+                android:paddingVertical="20dp"
+                android:layout_column="3"
+                android:textSize="15sp"/>
+        </TableRow>
+        <TableRow>
+            <Button
+                android:id="@+id/submitSpeciesCountButton"
+                android:layout_column="3"
+                android:paddingVertical="10dp"
+                android:text="Submit"
+                android:textSize="20sp"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:layout_height="wrap_content"
+                android:layout_width="wrap_content"/>
         </TableRow>
     </TableLayout>
     </ScrollView>
