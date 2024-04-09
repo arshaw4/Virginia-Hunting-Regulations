@@ -6,5 +6,34 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ResultScreen">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:fillViewport="true"
+        android:scrollbars = "vertical"
+        android:scrollbarStyle="insideInset">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="Results:"
+                android:gravity="center"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/tealResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Teal Line"
+                android:textSize="20sp"/>
+
+        </LinearLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
