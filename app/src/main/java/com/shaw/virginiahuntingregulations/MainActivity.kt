@@ -34,7 +34,9 @@ private val calendar = Calendar.getInstance()
         }
         findViewById<Button>(R.id.submitDateButton).setOnClickListener{
             val intent = Intent(this, SpeciesInput::class.java)
-            intent.putExtra("date", calendar)
+            intent.putExtra("month", calendar.get(Calendar.MONTH))
+            intent.putExtra("day",calendar.get(Calendar.DAY_OF_MONTH))
+            intent.putExtra("year",calendar.get(Calendar.YEAR))
             startActivity(intent)
         }
     }

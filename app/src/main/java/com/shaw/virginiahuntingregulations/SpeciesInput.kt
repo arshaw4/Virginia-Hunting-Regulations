@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import java.util.Calendar
 
 class SpeciesInput : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -20,10 +21,14 @@ class SpeciesInput : AppCompatActivity() {
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom)
             insets
         }
-        val calendar = intent.getStringExtra("date")
+        val month = intent.getIntExtra("month", -1)
+        val day = intent.getIntExtra("day", -1)
+        val year = intent.getIntExtra("year", -1)
         findViewById<Button>(R.id.submitSpeciesCountButton).setOnClickListener{
             val intent = Intent(this, ResultScreen::class.java)
-            intent.putExtra("date", calendar)
+            intent.putExtra("month", month)
+            intent.putExtra("day",day)
+            intent.putExtra("year",year)
             intent.putExtra("tealValue", findViewById<EditText>(R.id.tealInputValue).text.toString().toInt())
             intent.putExtra("mergansersValue", findViewById<EditText>(R.id.mergansersInputValue).text.toString().toInt())
             intent.putExtra("mallardDrakeValue", findViewById<EditText>(R.id.mallardDrakeInputValue).text.toString().toInt())
