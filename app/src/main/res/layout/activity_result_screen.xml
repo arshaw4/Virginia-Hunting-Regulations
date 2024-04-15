@@ -38,6 +38,18 @@
                 android:layout_height="wrap_content"
                 android:text="Mergansers Line"
                 android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/numDuckResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Combinatorical Number of Ways to limit on ducks"
+                android:textSize="20sp"/>
+            <TextView
+                android:id="@+id/duckResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Duck Line"
+                android:textSize="20sp"/>
 
         </LinearLayout>
     </ScrollView>
