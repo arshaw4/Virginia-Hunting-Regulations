@@ -49,6 +49,26 @@ class ResultScreen : AppCompatActivity() {
             tealResults(calendar, tealValue, i95ZoneSwitchValue)
         findViewById<TextView>(R.id.mergansersResults).text =
             mergansersResults(calendar, mergansersValue)
+        findViewById<TextView>(R.id.cootResults).text = cootResults(calendar, cootValue)
+        findViewById<TextView>(R.id.geeseResults).text =
+            geeseResults(calendar, geeseValue, huntZoneSwitchValue)
+        findViewById<TextView>(R.id.duckResults).text = duckResults(
+            calendar,
+            mallardDrakeValue,
+            mallardHenValue,
+            woodDuckValue,
+            blackDuckValue,
+            scaupValue,
+            redheadValue,
+            canvasbackValue,
+            pintailValue,
+            mottledDuckValue,
+            fulvousWhistlingValue,
+            scoterValue,
+            eiderDrakeValue,
+            eiderHenValue,
+            longTailValue
+        )
     }
 
     private fun dateInRange(
@@ -133,6 +153,113 @@ class ResultScreen : AppCompatActivity() {
         }
     }
 
+    private fun cootResults(calendar: Calendar, cootInput: Int): String {
+        var inOneOfRanges = false
+        val seasonStart = Calendar.getInstance()
+        val seasonEnd = Calendar.getInstance()
+        //October 6-9
+        seasonStart.set(calendar.get(Calendar.YEAR), 9, 6, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 9, 9, 23, 59, 59)
+        inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
+        //November 15-26
+        seasonStart.set(calendar.get(Calendar.YEAR), 10, 15, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 10, 26, 23, 59, 59)
+        inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+        //December 19-January 31
+        seasonStart.set(calendar.get(Calendar.YEAR), 11, 19, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 11, 31, 23, 59, 59)
+        inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+        seasonStart.set(calendar.get(Calendar.YEAR), 0, 1, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 0, 31, 23, 59, 59)
+        inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+        return if (inOneOfRanges) {
+            if (cootInput < 15) {
+                "You can bag " + (15 - cootInput) + " more Coot today"
+            } else if (cootInput == 15) {
+                "You have reached the daily Coot bag limit"
+            } else {
+                "You have surpassed the daily Coot bag limit by " + (cootInput - 15)
+            }
+        } else {
+            "Coot are not in season"
+        }
+    }
+
+    private fun geeseResults(
+        calendar: Calendar,
+        geeseInput: Int,
+        huntZoneValue: Boolean
+    ): String {
+        //atlantic is false
+        val seasonStart = Calendar.getInstance()
+        val seasonEnd = Calendar.getInstance()
+        //check September Canada Goose first, September 1-25
+        seasonStart.set(calendar.get(Calendar.YEAR), 8, 1, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 8, 25, 23, 59, 59)
+        if (dateInRange(seasonStart, seasonEnd, calendar)) {
+            return if (geeseInput < 10) {
+                "You can bag " + (10 - geeseInput) + " more Geese today"
+            } else if (geeseInput == 10) {
+                "You have reached the daily Geese bag limit"
+            } else {
+                "You have surpassed the daily Geese bag limit by " + (geeseInput - 10)
+            }
+        } else {
+            //now check for normal geese season
+            //Atlantic Population Zone (AP) Seasons
+            if (!huntZoneValue) {
+                var inOneOfRanges = false
+                //November 22-26
+                seasonStart.set(calendar.get(Calendar.YEAR), 10, 22, 0, 0, 0)
+                seasonEnd.set(calendar.get(Calendar.YEAR), 10, 26, 23, 59, 59)
+                inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
+                //December 23 – January 31
+                seasonStart.set(calendar.get(Calendar.YEAR), 11, 23, 0, 0, 0)
+                seasonEnd.set(calendar.get(Calendar.YEAR), 11, 31, 23, 59, 59)
+                inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+                seasonStart.set(calendar.get(Calendar.YEAR), 0, 1, 0, 0, 0)
+                seasonEnd.set(calendar.get(Calendar.YEAR), 0, 31, 23, 59, 59)
+                inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+                return if (inOneOfRanges) {
+                    if (geeseInput < 2) {
+                        "You can bag " + (2 - geeseInput) + " more Geese today"
+                    } else if (geeseInput == 2) {
+                        "You have reached the daily Geese bag limit"
+                    } else {
+                        "You have surpassed the daily Geese bag limit by " + (geeseInput - 2)
+                    }
+                } else {
+                    "Geese are not in season"
+                }
+            } else {
+                //Resident Population Zone (RP) Seasons
+                var inOneOfRanges = false
+                //November 15-26
+                seasonStart.set(calendar.get(Calendar.YEAR), 10, 15, 0, 0, 0)
+                seasonEnd.set(calendar.get(Calendar.YEAR), 10, 26, 23, 59, 59)
+                inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
+                //December 19 – February 24
+                seasonStart.set(calendar.get(Calendar.YEAR), 11, 19, 0, 0, 0)
+                seasonEnd.set(calendar.get(Calendar.YEAR), 11, 31, 23, 59, 59)
+                inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+                seasonStart.set(calendar.get(Calendar.YEAR), 0, 1, 0, 0, 0)
+                seasonEnd.set(calendar.get(Calendar.YEAR), 1, 24, 23, 59, 59)
+                inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+                return if (inOneOfRanges) {
+                    if (geeseInput < 5) {
+                        "You can bag " + (5 - geeseInput) + " more Geese today"
+                    } else if (geeseInput == 5) {
+                        "You have reached the daily Geese bag limit"
+                    } else {
+                        "You have surpassed the daily Geese bag limit by " + (geeseInput - 5)
+                    }
+                } else {
+                    "Geese are not in season"
+                }
+            }
+        }
+    }
+
     private fun duckResults(
         calendar: Calendar,
         mallardDrakeInput: Int,
@@ -145,13 +272,47 @@ class ResultScreen : AppCompatActivity() {
         pintailInput: Int,
         mottledDuckInput: Int,
         fulvousInput: Int,
-        cootInput: Int,
-        geeseInput: Int,
         scoterInput: Int,
         eiderDrakeInput: Int,
         eiderHenInput: Int,
         longTailInput: Int
     ): String {
-        return " "
+        val returnString = StringBuilder()
+        val seasonStart = Calendar.getInstance()
+        val seasonEnd = Calendar.getInstance()
+        //October 6-9 (Black duck closed)
+        seasonStart.set(calendar.get(Calendar.YEAR), 9, 6, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 9, 9, 23, 59, 59)
+        if (dateInRange(seasonStart, seasonEnd, calendar)) {
+            return returnString.toString()
+        }
+        //November 15-26
+        seasonStart.set(calendar.get(Calendar.YEAR), 10, 15, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 10, 26, 23, 59, 59)
+        if (dateInRange(seasonStart, seasonEnd, calendar)) {
+            return returnString.toString()
+        }
+        //December 19-January 31
+        seasonStart.set(calendar.get(Calendar.YEAR), 11, 19, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 11, 31, 23, 59, 59)
+        var inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
+        seasonStart.set(calendar.get(Calendar.YEAR), 0, 1, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 0, 31, 23, 59, 59)
+        inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+        if (inOneOfRanges) {
+            return returnString.toString()
+        }
+        //October 21 & February 3 – Youth and Veterans Waterfowl Hunting Days
+        seasonStart.set(calendar.get(Calendar.YEAR), 9, 21, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 9, 21, 23, 59, 59)
+        inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
+        seasonStart.set(calendar.get(Calendar.YEAR), 1, 3, 0, 0, 0)
+        seasonEnd.set(calendar.get(Calendar.YEAR), 1, 3, 23, 59, 59)
+        inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
+        if (inOneOfRanges) {
+            return returnString.toString()
+        }
+        //not in any range
+        return "Ducks are not in season (Mallard, Wood, Black, Scaup, Redhead, Canvasback, Pintail, Mottled, Fulvous, Scoter, Eider, and Long-tail"
     }
 }

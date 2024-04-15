@@ -6,50 +6,77 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".ResultScreen">
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         android:fillViewport="true"
-        android:scrollbars = "vertical"
-        android:scrollbarStyle="insideInset">
+        android:scrollbarStyle="insideInset"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
+
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
-                android:text="Results:"
                 android:gravity="center"
-                android:textSize="20sp"/>
+                android:text="Results:"
+                android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/tealResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Teal Line"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/mergansersResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Mergansers Line"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/cootResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Coot Line"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/geeseResults"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Geese Line"
+                android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/numDuckResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Combinatorical Number of Ways to limit on ducks"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
             <TextView
                 android:id="@+id/duckResults"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Duck Line"
-                android:textSize="20sp"/>
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="*Youth and Veteran hunt day bag limits may be inaccurate, please refer to the Virginia DWR website"
+                android:textSize="20sp" />
 
         </LinearLayout>
     </ScrollView>
