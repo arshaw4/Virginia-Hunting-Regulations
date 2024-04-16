@@ -297,46 +297,44 @@ class ResultScreen : AppCompatActivity() {
         seasonEnd.set(calendar.get(Calendar.YEAR), 0, 31, 23, 59, 59)
         inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
         if (inOneOfRanges) {
-            returnString.append("You can bag up to 6 total ducks of the following options: \n")
+            returnString.appendLine("You can bag up to 6 total ducks of the following options:")
             if (mallardDrakeInput + mallardHenInput == 4) {
-                returnString.append("You have reached the daily Mallard bag limit, ")
+                returnString.appendLine("You have reached the daily Mallard bag limit, ")
                 if (mallardHenInput > 2) {
-                    returnString.append("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
+                    returnString.appendLine("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
                     //dont check for hen being under 2 because we have already reached limit
                 }
             } else if (mallardDrakeInput + mallardHenInput < 4) {
-                returnString.append("You can bag up to " + (4 - (mallardDrakeInput + mallardHenInput)) + " more Mallard Drakes, ")
+                returnString.appendLine("You can bag up to " + (4 - (mallardDrakeInput + mallardHenInput)) + " more Mallard Drakes, ")
                 if (mallardHenInput > 2) {
-                    returnString.append("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
+                    returnString.appendLine("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
                 } else if (mallardHenInput == 2) {
-                    returnString.append("You have reached the daily Mallard Hen bag limit, ")
+                    returnString.appendLine("You have reached the daily Mallard Hen bag limit, ")
                 } else {
-                    returnString.append("You can bag up to " + (2 - mallardHenInput) + " more Mallard Hens, ")
+                    returnString.appendLine("You can bag up to " + (2 - mallardHenInput) + " more Mallard Hens, ")
                 }
-
-
             } else {
-                returnString.append("You have surpassed the daily Mallard bag limit by " + (mallardDrakeInput + mallardHenInput - 4) + ", ")
+                returnString.appendLine("You have surpassed the daily Mallard bag limit by " + (mallardDrakeInput + mallardHenInput - 4) + ", ")
                 if (mallardHenInput > 2) {
-                    returnString.append("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
+                    returnString.appendLine("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
                 }
             }
             if (woodDuckInput > 3) {
-                returnString.append("You have surpassed the daily Wood Duck bag limit by " + (woodDuckInput - 3) + ", ")
+                returnString.appendLine("You have surpassed the daily Wood Duck bag limit by " + (woodDuckInput - 3) + ", ")
             } else if (woodDuckInput == 3) {
-                returnString.append("You have reached the daily Wood Duck bag limit, ")
+                returnString.appendLine("You have reached the daily Wood Duck bag limit, ")
             } else {
-                returnString.append("You can bag up to " + (3 - woodDuckInput) + " more Wood Ducks, ")
+                returnString.appendLine("You can bag up to " + (3 - woodDuckInput) + " more Wood Ducks, ")
             }
             if (blackDuckClosed) {
-                returnString.append("Black Ducks are not in season October 6-9, ")
+                returnString.appendLine("Black Ducks are not in season October 6-9, ")
             } else {
                 if (blackDuckInput > 2) {
-                    returnString.append("You have surpassed the daily Black Duck bag limit by " + (blackDuckInput - 2) + ", ")
+                    returnString.appendLine("You have surpassed the daily Black Duck bag limit by " + (blackDuckInput - 2) + ", ")
                 } else if (blackDuckInput == 2) {
-                    returnString.append("You have reached the daily Black Duck bag limit, ")
+                    returnString.appendLine("You have reached the daily Black Duck bag limit, ")
                 } else {
-                    returnString.append("You can bag up to " + (2 - blackDuckInput) + " more Black Ducks, ")
+                    returnString.appendLine("You can bag up to " + (2 - blackDuckInput) + " more Black Ducks, ")
                 }
             }
             var scaupTwoPerDay = false;
@@ -347,58 +345,116 @@ class ResultScreen : AppCompatActivity() {
             if (scaupTwoPerDay) {
                 //limit is 2
                 if (scaupInput > 2) {
-                    returnString.append("You have surpassed the daily Scaup bag limit by " + (scaupInput - 2) + ", ")
+                    returnString.appendLine("You have surpassed the daily Scaup bag limit by " + (scaupInput - 2) + ", ")
                 } else if (scaupInput == 2) {
-                    returnString.append("You have reached the daily Scaup bag limit, ")
+                    returnString.appendLine("You have reached the daily Scaup bag limit, ")
                 } else {
-                    returnString.append("You can bag up to " + (2 - scaupInput) + " more Scaup,")
+                    returnString.appendLine("You can bag up to " + (2 - scaupInput) + " more Scaup,")
                 }
             } else {
                 //limit is 1
                 if (scaupInput > 1) {
-                    returnString.append("You have surpassed the daily Scaup bag limit by " + (scaupInput - 1) + ", ")
+                    returnString.appendLine("You have surpassed the daily Scaup bag limit by " + (scaupInput - 1) + ", ")
                 } else if (scaupInput == 1) {
-                    returnString.append("You have reached the daily Scaup bag limit, ")
+                    returnString.appendLine("You have reached the daily Scaup bag limit, ")
                 } else {
-                    returnString.append("You can bag up to " + (1 - scaupInput) + " more Scaup,")
+                    returnString.appendLine("You can bag up to " + (1 - scaupInput) + " more Scaup,")
                 }
             }
             if (redheadInput > 2) {
-                returnString.append("You have surpassed the daily Redhead bag limit by " + (redheadInput - 2) + ", ")
+                returnString.appendLine("You have surpassed the daily Redhead bag limit by " + (redheadInput - 2) + ", ")
             } else if (redheadInput == 2) {
-                returnString.append("You have reached the daily Redhead bag limit, ")
+                returnString.appendLine("You have reached the daily Redhead bag limit, ")
             } else {
-                returnString.append("You can bag up to " + (2 - redheadInput) + " more Redheads, ")
+                returnString.appendLine("You can bag up to " + (2 - redheadInput) + " more Redheads, ")
             }
             if (canvasbackInput > 2) {
-                returnString.append("You have surpassed the daily Canvasback bag limit by " + (canvasbackInput - 2) + ", ")
+                returnString.appendLine("You have surpassed the daily Canvasback bag limit by " + (canvasbackInput - 2) + ", ")
             } else if (canvasbackInput == 2) {
-                returnString.append("You have reached the daily Canvasback bag limit, ")
+                returnString.appendLine("You have reached the daily Canvasback bag limit, ")
             } else {
-                returnString.append("You can bag up to " + (2 - canvasbackInput) + " more Canvasback, ")
+                returnString.appendLine("You can bag up to " + (2 - canvasbackInput) + " more Canvasback, ")
             }
             if (pintailInput > 1) {
-                returnString.append("You have surpassed the daily Pintail bag limit by " + (pintailInput - 1) + ", ")
+                returnString.appendLine("You have surpassed the daily Pintail bag limit by " + (pintailInput - 1) + ", ")
             } else if (pintailInput == 1) {
-                returnString.append("You have reached the daily Pintail bag limit, ")
+                returnString.appendLine("You have reached the daily Pintail bag limit, ")
             } else {
-                returnString.append("You can bag up to " + (1 - pintailInput) + " more Pintail,")
+                returnString.appendLine("You can bag up to " + (1 - pintailInput) + " more Pintail,")
             }
             if (mottledDuckInput > 1) {
-                returnString.append("You have surpassed the daily Mottled Duck bag limit by " + (mottledDuckInput - 1) + ", ")
+                returnString.appendLine("You have surpassed the daily Mottled Duck bag limit by " + (mottledDuckInput - 1) + ", ")
             } else if (mottledDuckInput == 1) {
-                returnString.append("You have reached the daily Mottled Duck bag limit, ")
+                returnString.appendLine("You have reached the daily Mottled Duck bag limit, ")
             } else {
-                returnString.append("You can bag up to " + (1 - mottledDuckInput) + " more Mottled Ducks,")
+                returnString.appendLine("You can bag up to " + (1 - mottledDuckInput) + " more Mottled Ducks,")
             }
             if (fulvousInput > 1) {
-                returnString.append("You have surpassed the daily Fulvous Whistling Duck bag limit by " + (fulvousInput - 1) + ", ")
+                returnString.appendLine("You have surpassed the daily Fulvous Whistling Duck bag limit by " + (fulvousInput - 1) + ", ")
             } else if (fulvousInput == 1) {
-                returnString.append("You have reached the daily Fulvous Whistling Duck bag limit, ")
+                returnString.appendLine("You have reached the daily Fulvous Whistling Duck bag limit, ")
             } else {
-                returnString.append("You can bag up to " + (1 - fulvousInput) + " more Fulvous Whistling Ducks,")
+                returnString.appendLine("You can bag up to " + (1 - fulvousInput) + " more Fulvous Whistling Ducks,")
             }
-
+            val totalSeaDucks = scoterInput + eiderDrakeInput + eiderHenInput + longTailInput
+            if (totalSeaDucks > 4) {
+                returnString.appendLine("You have surpassed the daily Sea Duck bag limit by " + (totalSeaDucks - 4) + ", ")
+                if (scoterInput > 3) {
+                    returnString.appendLine("You have surpassed the daily Scoter bag limit by " + (scoterInput - 3) + ", ")
+                }
+                if (eiderDrakeInput + eiderHenInput > 3) {
+                    returnString.appendLine("You have surpassed the daily Eider bag limit by " + (eiderHenInput + eiderDrakeInput - 3) + ", ")
+                }
+                if (eiderHenInput > 1) {
+                    returnString.appendLine("You have surpassed the daily Eider hen bag limit by " + (eiderHenInput - 1) + ", ")
+                }
+                if (longTailInput > 3) {
+                    returnString.appendLine("You have surpassed the daily Long-tailed Duck bag limit by " + (longTailInput - 3) + ", ")
+                }
+            } else if (totalSeaDucks == 4) {
+                returnString.appendLine("You have reached the daily Sea Duck bag limit, ")
+                if (scoterInput > 3) {
+                    returnString.appendLine("You have surpassed the daily Scoter bag limit by " + (scoterInput - 3) + ", ")
+                }
+                if (eiderDrakeInput + eiderHenInput > 3) {
+                    returnString.appendLine("You have surpassed the daily Eider bag limit by " + (eiderHenInput + eiderDrakeInput - 3) + ", ")
+                }
+                if (eiderHenInput > 1) {
+                    returnString.appendLine("You have surpassed the daily Eider hen bag limit by " + (eiderHenInput - 1) + ", ")
+                }
+                if (longTailInput > 3) {
+                    returnString.appendLine("You have surpassed the daily Long-tailed Duck bag limit by " + (longTailInput - 3) + ", ")
+                }
+            } else {
+                returnString.appendLine("You can bag up to " + (4 - totalSeaDucks) + " more Sea Ducks, ")
+                //we can make logical assumptions since the upper bound for scoters, eiders, and long tailed ducks
+                // is 3 we don't have to check if theyre greater than 3 because then totalSeaDucks would be 4 or more
+                if (scoterInput==3){
+                    returnString.appendLine("You have reached the daily Scoter bag limit, ")
+                } else{
+                    returnString.appendLine("You can bag up to " + (3-scoterInput) + " more Scoter, ")
+                }
+                if(eiderHenInput+eiderDrakeInput==3){
+                    returnString.appendLine("You have reached the daily Eider bag limit, ")
+                    if (eiderHenInput > 1) {
+                        returnString.appendLine("You have surpassed the daily Eider hen bag limit by " + (eiderHenInput - 1) + ", ")
+                    }
+                } else{
+                    returnString.appendLine("You can bag up to " + (3-(eiderHenInput+eiderDrakeInput)) + " more Eider Drakes, ")
+                    if (eiderHenInput > 1) {
+                        returnString.appendLine("You have surpassed the daily Eider hen bag limit by " + (eiderHenInput - 1) + ", ")
+                    } else if(eiderHenInput==1){
+                        returnString.appendLine("You have reached the daily Eider Hen bag limit, ")
+                    } else{
+                        returnString.appendLine("You can bag up to " + (1-eiderHenInput) + " more Eider Hens, ")
+                    }
+                }
+                if (longTailInput==3){
+                    returnString.appendLine("You have reached the daily Long-tailed Duck bag limit, ")
+                } else{
+                    returnString.appendLine("You can bag up to " + (3-longTailInput) + " more Long-tailed Ducks, ")
+                }
+            }
             return returnString.toString()
         }
         //October 21 & February 3 – Youth and Veterans Waterfowl Hunting Days
