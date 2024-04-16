@@ -1,11 +1,9 @@
 package com.shaw.virginiahuntingregulations
 
 import android.os.Bundle
-import android.widget.EditText
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.widget.SwitchCompat
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import java.util.Calendar
@@ -280,39 +278,89 @@ class ResultScreen : AppCompatActivity() {
         val returnString = StringBuilder()
         val seasonStart = Calendar.getInstance()
         val seasonEnd = Calendar.getInstance()
+        var inOneOfRanges = false
+        var blackDuckClosed = false;
         //October 6-9 (Black duck closed)
         seasonStart.set(calendar.get(Calendar.YEAR), 9, 6, 0, 0, 0)
         seasonEnd.set(calendar.get(Calendar.YEAR), 9, 9, 23, 59, 59)
-        if (dateInRange(seasonStart, seasonEnd, calendar)) {
-            return returnString.toString()
-        }
+        blackDuckClosed = dateInRange(seasonStart, seasonEnd, calendar)
+        inOneOfRanges = inOneOfRanges || blackDuckClosed
         //November 15-26
         seasonStart.set(calendar.get(Calendar.YEAR), 10, 15, 0, 0, 0)
         seasonEnd.set(calendar.get(Calendar.YEAR), 10, 26, 23, 59, 59)
-        if (dateInRange(seasonStart, seasonEnd, calendar)) {
-            return returnString.toString()
-        }
+        inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
         //December 19-January 31
         seasonStart.set(calendar.get(Calendar.YEAR), 11, 19, 0, 0, 0)
         seasonEnd.set(calendar.get(Calendar.YEAR), 11, 31, 23, 59, 59)
-        var inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
+        inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
         seasonStart.set(calendar.get(Calendar.YEAR), 0, 1, 0, 0, 0)
         seasonEnd.set(calendar.get(Calendar.YEAR), 0, 31, 23, 59, 59)
         inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
         if (inOneOfRanges) {
+            returnString.append("You can bag up to 6 total ducks of the following options: \n")
+            if (mallardDrakeInput + mallardHenInput == 4) {
+                returnString.append("You have reached the daily Mallard bag limit, ")
+                if (mallardHenInput > 2) {
+                    returnString.append("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
+                    //dont check for hen being under 2 because we have already reached limit
+                }
+            } else if (mallardDrakeInput + mallardHenInput < 4) {
+                returnString.append("You can bag up to " + (4 - (mallardDrakeInput + mallardHenInput)) + " more Mallard Drakes, ")
+                if (mallardHenInput > 2) {
+                    returnString.append("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
+                } else if (mallardHenInput == 2) {
+                    returnString.append("You have reached the daily Mallard Hen bag limit, ")
+                } else {
+                    returnString.append("You can bag up to " + (2 - mallardHenInput) + " more Mallard Hens, ")
+                }
+
+
+            } else {
+                returnString.append("You have surpassed the daily Mallard bag limit by " + (mallardDrakeInput + mallardHenInput - 4) + ", ")
+                if (mallardHenInput > 2) {
+                    returnString.append("You have surpassed the daily Mallard Hen bag limit by " + (mallardHenInput - 2) + ", ")
+                }
+            }
+            if (woodDuckInput > 3) {
+                returnString.append("You have surpassed the daily Wood Duck bag limit by " + (woodDuckInput - 3) + ", ")
+            } else if (woodDuckInput == 3) {
+                returnString.append("You have reached the daily Wood Duck bag limit, ")
+            } else {
+                returnString.append("You can bag up to " + (3 - woodDuckInput) + " more Wood Ducks, ")
+            }
+            if (blackDuckClosed) {
+                returnString.append("Black Ducks are not in season October 6-9, ")
+            } else {
+                if (blackDuckInput > 2) {
+                    returnString.append("You have surpassed the daily Black Duck bag limit by " + (blackDuckInput - 2) + ", ")
+                } else if (blackDuckInput == 2) {
+                    returnString.append("You have reached the daily Black Duck bag limit, ")
+                } else {
+                    returnString.append("You can bag up to " + (2 - blackDuckInput) + ", ")
+                }
+            }
+            var scaupTwoPerDay = false;
+            //January 12-31
+            seasonStart.set(calendar.get(Calendar.YEAR), 0, 12, 0, 0, 0)
+            seasonEnd.set(calendar.get(Calendar.YEAR), 0, 31, 23, 59, 59)
+            scaupTwoPerDay = dateInRange(seasonStart, seasonEnd, calendar);
+            if (scaupTwoPerDay) {
+                //limit is 2
+            } else {
+                //limit is 1
+            }
             return returnString.toString()
         }
         //October 21 & February 3 – Youth and Veterans Waterfowl Hunting Days
-        seasonStart.set(calendar.get(Calendar.YEAR), 9, 21, 0, 0, 0)
-        seasonEnd.set(calendar.get(Calendar.YEAR), 9, 21, 23, 59, 59)
-        inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
-        seasonStart.set(calendar.get(Calendar.YEAR), 1, 3, 0, 0, 0)
-        seasonEnd.set(calendar.get(Calendar.YEAR), 1, 3, 23, 59, 59)
-        inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
-        if (inOneOfRanges) {
-            return returnString.toString()
-        }
+//        seasonStart.set(calendar.get(Calendar.YEAR), 9, 21, 0, 0, 0)
+//        seasonEnd.set(calendar.get(Calendar.YEAR), 9, 21, 23, 59, 59)
+//        inOneOfRanges = dateInRange(seasonStart, seasonEnd, calendar)
+//        seasonStart.set(calendar.get(Calendar.YEAR), 1, 3, 0, 0, 0)
+//        seasonEnd.set(calendar.get(Calendar.YEAR), 1, 3, 23, 59, 59)
+//        inOneOfRanges = inOneOfRanges || dateInRange(seasonStart, seasonEnd, calendar)
         //not in any range
-        return "Ducks are not in season (Mallard, Wood, Black, Scaup, Redhead, Canvasback, Pintail, Mottled, Fulvous, Scoter, Eider, and Long-tail"
+        else {
+            return "Ducks are not in season (Mallard, Wood, Black, Scaup, Redhead, Canvasback, Pintail, Mottled, Fulvous, Scoter, Eider, and Long-tail"
+        }
     }
 }
