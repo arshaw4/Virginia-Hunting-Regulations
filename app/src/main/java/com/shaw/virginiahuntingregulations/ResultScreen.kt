@@ -336,7 +336,7 @@ class ResultScreen : AppCompatActivity() {
                 } else if (blackDuckInput == 2) {
                     returnString.append("You have reached the daily Black Duck bag limit, ")
                 } else {
-                    returnString.append("You can bag up to " + (2 - blackDuckInput) + ", ")
+                    returnString.append("You can bag up to " + (2 - blackDuckInput) + " more Black Ducks, ")
                 }
             }
             var scaupTwoPerDay = false;
@@ -346,9 +346,59 @@ class ResultScreen : AppCompatActivity() {
             scaupTwoPerDay = dateInRange(seasonStart, seasonEnd, calendar);
             if (scaupTwoPerDay) {
                 //limit is 2
+                if (scaupInput > 2) {
+                    returnString.append("You have surpassed the daily Scaup bag limit by " + (scaupInput - 2) + ", ")
+                } else if (scaupInput == 2) {
+                    returnString.append("You have reached the daily Scaup bag limit, ")
+                } else {
+                    returnString.append("You can bag up to " + (2 - scaupInput) + " more Scaup,")
+                }
             } else {
                 //limit is 1
+                if (scaupInput > 1) {
+                    returnString.append("You have surpassed the daily Scaup bag limit by " + (scaupInput - 1) + ", ")
+                } else if (scaupInput == 1) {
+                    returnString.append("You have reached the daily Scaup bag limit, ")
+                } else {
+                    returnString.append("You can bag up to " + (1 - scaupInput) + " more Scaup,")
+                }
             }
+            if (redheadInput > 2) {
+                returnString.append("You have surpassed the daily Redhead bag limit by " + (redheadInput - 2) + ", ")
+            } else if (redheadInput == 2) {
+                returnString.append("You have reached the daily Redhead bag limit, ")
+            } else {
+                returnString.append("You can bag up to " + (2 - redheadInput) + " more Redheads, ")
+            }
+            if (canvasbackInput > 2) {
+                returnString.append("You have surpassed the daily Canvasback bag limit by " + (canvasbackInput - 2) + ", ")
+            } else if (canvasbackInput == 2) {
+                returnString.append("You have reached the daily Canvasback bag limit, ")
+            } else {
+                returnString.append("You can bag up to " + (2 - canvasbackInput) + " more Canvasback, ")
+            }
+            if (pintailInput > 1) {
+                returnString.append("You have surpassed the daily Pintail bag limit by " + (pintailInput - 1) + ", ")
+            } else if (pintailInput == 1) {
+                returnString.append("You have reached the daily Pintail bag limit, ")
+            } else {
+                returnString.append("You can bag up to " + (1 - pintailInput) + " more Pintail,")
+            }
+            if (mottledDuckInput > 1) {
+                returnString.append("You have surpassed the daily Mottled Duck bag limit by " + (mottledDuckInput - 1) + ", ")
+            } else if (mottledDuckInput == 1) {
+                returnString.append("You have reached the daily Mottled Duck bag limit, ")
+            } else {
+                returnString.append("You can bag up to " + (1 - mottledDuckInput) + " more Mottled Ducks,")
+            }
+            if (fulvousInput > 1) {
+                returnString.append("You have surpassed the daily Fulvous Whistling Duck bag limit by " + (fulvousInput - 1) + ", ")
+            } else if (fulvousInput == 1) {
+                returnString.append("You have reached the daily Fulvous Whistling Duck bag limit, ")
+            } else {
+                returnString.append("You can bag up to " + (1 - fulvousInput) + " more Fulvous Whistling Ducks,")
+            }
+
             return returnString.toString()
         }
         //October 21 & February 3 – Youth and Veterans Waterfowl Hunting Days
