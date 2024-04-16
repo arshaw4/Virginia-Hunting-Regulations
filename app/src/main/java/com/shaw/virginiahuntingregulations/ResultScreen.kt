@@ -429,31 +429,40 @@ class ResultScreen : AppCompatActivity() {
                 returnString.appendLine("You can bag up to " + (4 - totalSeaDucks) + " more Sea Ducks, ")
                 //we can make logical assumptions since the upper bound for scoters, eiders, and long tailed ducks
                 // is 3 we don't have to check if theyre greater than 3 because then totalSeaDucks would be 4 or more
-                if (scoterInput==3){
+                if (scoterInput == 3) {
                     returnString.appendLine("You have reached the daily Scoter bag limit, ")
-                } else{
-                    returnString.appendLine("You can bag up to " + (3-scoterInput) + " more Scoter, ")
+                } else {
+                    returnString.appendLine("You can bag up to " + (3 - scoterInput) + " more Scoter, ")
                 }
-                if(eiderHenInput+eiderDrakeInput==3){
+                if (eiderHenInput + eiderDrakeInput == 3) {
                     returnString.appendLine("You have reached the daily Eider bag limit, ")
                     if (eiderHenInput > 1) {
                         returnString.appendLine("You have surpassed the daily Eider hen bag limit by " + (eiderHenInput - 1) + ", ")
                     }
-                } else{
-                    returnString.appendLine("You can bag up to " + (3-(eiderHenInput+eiderDrakeInput)) + " more Eider Drakes, ")
+                } else {
+                    returnString.appendLine("You can bag up to " + (3 - (eiderHenInput + eiderDrakeInput)) + " more Eider Drakes, ")
                     if (eiderHenInput > 1) {
                         returnString.appendLine("You have surpassed the daily Eider hen bag limit by " + (eiderHenInput - 1) + ", ")
-                    } else if(eiderHenInput==1){
+                    } else if (eiderHenInput == 1) {
                         returnString.appendLine("You have reached the daily Eider Hen bag limit, ")
-                    } else{
-                        returnString.appendLine("You can bag up to " + (1-eiderHenInput) + " more Eider Hens, ")
+                    } else {
+                        returnString.appendLine("You can bag up to " + (1 - eiderHenInput) + " more Eider Hens, ")
                     }
                 }
-                if (longTailInput==3){
+                if (longTailInput == 3) {
                     returnString.appendLine("You have reached the daily Long-tailed Duck bag limit, ")
-                } else{
-                    returnString.appendLine("You can bag up to " + (3-longTailInput) + " more Long-tailed Ducks, ")
+                } else {
+                    returnString.appendLine("You can bag up to " + (3 - longTailInput) + " more Long-tailed Ducks, ")
                 }
+            }
+            val totalDucks =
+                mallardDrakeInput + mallardHenInput + woodDuckInput + blackDuckInput + scaupInput + redheadInput + canvasbackInput + pintailInput + mottledDuckInput + fulvousInput + scoterInput + eiderDrakeInput + eiderHenInput + longTailInput
+            if(totalDucks>6){
+                returnString.appendLine("You have surpassed the daily Duck Bag limit by " + (totalDucks-6))
+            }else if(totalDucks==6){
+                returnString.appendLine("You have reached the daily Duck bag limit")
+            }else{
+                returnString.appendLine("You can bag up to " + (6-totalDucks) + " more Ducks in total")
             }
             return returnString.toString()
         }
